@@ -1,0 +1,47 @@
+*** Begin Patch
+*** Update File: index.html
+@@
+-    <div id="root"></div>
+-    <script type="module" src="/src/main.tsx"></script>
++    <div id="root"></div>
++    <script type="module" src="src/main.tsx"></script>
+*** End Patch
+
+*** Begin Patch
+*** Update File: vite.config.ts
+@@
+-export default defineConfig(({ mode }) => ({
+-  server: {
+-    host: "::",
+-    port: 8080,
+-  },
+-  plugins: [
+-    react(),
+-    mode === 'development' &&
+-    componentTagger(),
+-  ].filter(Boolean),
+-  resolve: {
+-    alias: {
+-      "@": path.resolve(__dirname, "./src"),
+-    },
+-  },
+-}));
++export default defineConfig(({ mode }) => ({
++  root: path.resolve(__dirname),
++  base: './',
++  server: {
++    host: "::",
++    port: 8080,
++  },
++  plugins: [
++    react(),
++    mode === 'development' &&
++    componentTagger(),
++  ].filter(Boolean),
++  resolve: {
++    alias: {
++      "@": path.resolve(__dirname, "./src"),
++    },
++  },
++}));
+*** End Patch
